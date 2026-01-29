@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love: Everyday Meaning to Measurable Concepts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --dark-green: #144d3a;
+      --mid-green: #166545;
+      --light-green: #cfe5da;
+      --pale-green: #eef8f3;
+      --text-color: #0b1f17;
+      --black: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--pale-green);
+      color: var(--text-color);
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 24px 28px 40px;
+      background: #ffffff;
+      border-radius: 10px;
+      border: 1px solid var(--light-green);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 1.6rem;
+      color: var(--dark-green);
+    }
+
+    h2 {
+      margin: 18px 0 6px 0;
+      font-size: 1.15rem;
+      color: var(--dark-green);
+    }
+
+    h3 {
+      margin: 12px 0 4px 0;
+      font-size: 1rem;
+      color: var(--dark-green);
+    }
+
+    p {
+      margin: 4px 0 6px 0;
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+
+    .step-divider {
+      border: none;
+      border-top: 2px solid var(--black);
+      margin: 24px 0 16px;
+    }
+
+    .box {
+      border-radius: 8px;
+      border: 1px solid var(--light-green);
+      background: #fafafa;
+      padding: 10px 12px;
+      margin: 10px 0;
+    }
+
+    .box-title {
+      font-weight: bold;
+      color: var(--dark-green);
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .example-text {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 2px;
+      font-style: italic;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin: 6px 0 3px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      max-width: 100%;
+      padding: 6px 8px;
+      border-radius: 5px;
+      border: 1px solid #cccccc;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .small-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .small-row .field {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+
+    th,
+    td {
+      border: 1px solid #cccccc;
+      padding: 6px 8px;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--light-green);
+      color: var(--dark-green);
+      text-align: left;
+      font-weight: bold;
+    }
+
+    td textarea {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 4px;
+      border: 1px solid #cccccc;
+      font-size: 0.85rem;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: #555;
+      border-top: 1px solid var(--light-green);
+      padding-top: 8px;
+    }
+
+    .button-row {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .button-row input {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .button-row input[type="submit"] {
+      background: var(--mid-green);
+      color: #ffffff;
+    }
+
+    .button-row input[type="reset"] {
+      background: #e0e0e0;
+      color: #333;
+    }
+
+    /* Flag-style toggle for dimensions definition */
+    .flag-container {
+      margin: 10px 0 14px;
+    }
+
+    .flag-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: none;
+      background: var(--mid-green);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .flag-toggle:focus {
+      outline: 2px solid var(--dark-green);
+      outline-offset: 2px;
+    }
+
+    .flag-label {
+      white-space: nowrap;
+    }
+
+    .flag-icon {
+      font-size: 0.85rem;
+      transform: translateY(1px);
+    }
+
+    .flag-panel {
+      margin-top: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--light-green);
+      background: #fafafa;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .flag-panel.open {
+      display: block;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .page {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        max-width: 100%;
+      }
+      .button-row {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <form>
+
+      <!-- HEADER / BASIC INFO -->
+      <h1>Meaning Analysis Activity: Love and Love Languages</h1>
+
+      <div class="small-row">
+        <div class="field">
+          <label for="student_name">Student Name:</label>
+          <input type="text" id="student_name" name="student_name">
+        </div>
+        <div class="field">
+          <label for="course_section">Course / Section:</label>
+          <input type="text" id="course_section" name="course_section">
+        </div>
+        <div class="field">
+          <label for="date">Date:</label>
+          <input type="text" id="date" name="date">
+        </div>
+      </div>
+
+      <!-- STEP 1: EVERYDAY VS. SCIENTIFIC CONCEPTS -->
+      <hr class="step-divider">
+
+      <h2>Everyday vs. Scientific Concepts</h2>
+      <p>On your own, write your own definition of love, then list three everyday meanings of love to you.</p>
+
+      <div class="box">
+        <div class="box-title">Your Definition of Love:</div>
+        <p class="example-text">Example: Love is the feeling of closeness between two individuals.</p>
+        <textarea name="definition_of_love"></textarea>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Everyday Meaning 1</div>
+        <p class="example-text">Example: Love means you can trust someone with your feelings.</p>
+        <textarea name="everyday_meaning_1"></textarea>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Everyday Meaning 2</div>
+        <textarea name="everyday_meaning_2"></textarea>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Everyday Meaning 3</div>
+        <textarea name="everyday_meaning_3"></textarea>
+      </div>
+
+      <p>Work with your partner to clarify what you mean by “love” using the identification strategies to the left.</p>
+
+      <!-- STEP 2: MEANING ANALYSIS I -->
+      <hr class="step-divider">
+
+      <h2>Meaning Analysis I — Identify and Scope of Love</h2>
+
+      <p>Strategy table:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Strategy</th>
+            <th>What it does</th>
+            <th>Your Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Example</td>
+            <td>Make it concrete with clear instances.</td>
+            <td><textarea name="strategy_example"></textarea></td>
+          </tr>
+          <tr>
+            <td>Exclusions</td>
+            <td>Set boundaries / what is not.</td>
+            <td><textarea name="strategy_exclusions"></textarea></td>
+          </tr>
+          <tr>
+            <td>Comparisons/Subsets</td>
+            <td>Reveal internal variation of subtypes.</td>
+            <td><textarea name="strategy_comparisons"></textarea></td>
+          </tr>
+          <tr>
+            <td>Analogy</td>
+            <td>Use familiar image to illuminate.</td>
+            <td><textarea name="strategy_analogy"></textarea></td>
+          </tr>
+          <tr>
+            <td>Function (Effects)</td>
+            <td>Define by likely outcomes.</td>
+            <td><textarea name="strategy_function"></textarea></td>
+          </tr>
+          <tr>
+            <td>Antecedents (Causes)</td>
+            <td>Define by typical precursor.</td>
+            <td><textarea name="strategy_antecedents"></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box">
+        <p><strong>Discuss:</strong> With your partner, identify 1 term from your everyday meanings that is hard to measure (e.g., trust). Why are these terms difficult to measure?</p>
+        <textarea name="discussion_hard_to_measure"></textarea>
+      </div>
+
+      <div class="box">
+        <p><strong>Discuss:</strong> How do your conceptualizations after applying the identification strategies differ from everyday or casual meanings of the word?</p>
+        <textarea name="discussion_conceptualizations"></textarea>
+      </div>
+
+      <!-- STEP 3: LOVE LANGUAGE TABLE (PAGE 2 CONTENT BEGINS) -->
+      <hr class="step-divider">
+
+      <h2>Love Languages</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Love Language</th>
+            <th>Brief Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Words of Affirmation</td>
+            <td>Expressing love through verbal praise, appreciation, and specific encouragement.</td>
+          </tr>
+          <tr>
+            <td>Quality Time</td>
+            <td>Showing love by giving focused, undivided attention and shared meaningful activities.</td>
+          </tr>
+          <tr>
+            <td>Acts of Service</td>
+            <td>Communicating love through helpful actions that ease another person’s responsibilities.</td>
+          </tr>
+          <tr>
+            <td>Receiving Gifts</td>
+            <td>Expressing love with thoughtful items that symbolize care, attention, or milestones.</td>
+          </tr>
+          <tr>
+            <td>Physical Touch</td>
+            <td>Demonstrating love through affectionate, appropriate physical contact and closeness.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- STEP 4: MEANING ANALYSIS II — DIMENSIONS -->
+      <hr class="step-divider">
+
+      <h2>Meaning Analysis II — Dimensions</h2>
+
+      <p>Choose two of the love languages. For each one, identify 2–3 dimensions that represent distinct aspects of what that love language could look like. Each dimension should capture one specific facet of the broader love language.</p>
+
+      <!-- Flag-like expandable definition for dimensions -->
+      <div class="flag-container">
+        <button
+          type="button"
+          id="dimensions-flag-toggle"
+          class="flag-toggle"
+          aria-expanded="false"
+          aria-controls="dimensions-flag-panel"
+        >
+          <span class="flag-label">Click for a quick reminder: What are “dimensions” in meaning analysis?</span>
+          <span class="flag-icon">▾</span>
+        </button>
+        <div id="dimensions-flag-panel" class="flag-panel">
+          <p>
+            In McLeod’s meaning analysis, dimensions are the major facets or components of a concept. Each dimension
+            represents one coherent way the concept can vary while still counting as the same overall thing.
+          </p>
+          <p>
+            Together, the dimensions map out the “territory” of the concept so that:
+          </p>
+          <ul>
+            <li>Each dimension captures a distinct aspect of the broader concept.</li>
+            <li>Dimensions can vary somewhat independently (e.g., high on one, lower on another).</li>
+            <li>They help you move from a fuzzy everyday idea to a clearer, research-ready concept.</li>
+          </ul>
+          <p>
+            For example, with “quality time,” you might treat
+            <em>attentive presence</em>, <em>shared activities</em>, and <em>conversation depth</em> as separate
+            dimensions that together define what quality time can look like.
+          </p>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Example</div>
+        <p><strong>Love Language: Quality Time</strong></p>
+        <ul>
+          <li><strong>Attentive Presence</strong> – Being mentally focused and free of distractions during shared time.</li>
+          <li><strong>Shared Activities</strong> – Participating in mutually enjoyable tasks or routines.</li>
+          <li><strong>Conversation Depth</strong> – Engaging in meaningful, personal dialogue rather than surface-level talk.</li>
+        </ul>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Love Language 1</th>
+            <th>Love Language 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <label>Love Language 1:</label>
+              <input type="text" name="ll1_name">
+            </td>
+            <td>
+              <label>Love Language 2:</label>
+              <input type="text" name="ll2_name">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Dimension 1:</label>
+              <textarea name="ll1_dim1"></textarea>
+            </td>
+            <td>
+              <label>Dimension 1:</label>
+              <textarea name="ll2_dim1"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Dimension 2:</label>
+              <textarea name="ll1_dim2"></textarea>
+            </td>
+            <td>
+              <label>Dimension 2:</label>
+              <textarea name="ll2_dim2"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Dimension 3:</label>
+              <textarea name="ll1_dim3"></textarea>
+            </td>
+            <td>
+              <label>Dimension 3:</label>
+              <textarea name="ll2_dim3"></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- STEP 5: MEANING ANALYSIS III — INDICATORS -->
+      <hr class="step-divider">
+
+      <h2>Meaning Analysis III — Indicators</h2>
+
+      <p>First, choose one of your two love languages. For each of its dimensions, draft 2–3 observable indicators that specify who is acting, what they do, and—when relevant—how often, how long, or under what conditions the behavior occurs.</p>
+
+      <div class="box">
+        <div class="box-title">Guiding prompts</div>
+        <ul>
+          <li><strong>Actor:</strong> Is it clear who’s doing the behavior?</li>
+          <li><strong>Action:</strong> Is the behavior specific and observable?</li>
+          <li><strong>Threshold:</strong> Is there a clear time frame or count when needed?</li>
+          <li><strong>Ambiguity:</strong> Any vague words that could be interpreted differently?</li>
+          <li><strong>Fit:</strong> Does it truly reflect the intended dimension?</li>
+          <li><strong>Refine:</strong> What one tweak (time, count, condition) would make it tighter?</li>
+        </ul>
+      </div>
+
+      <p>Second, work with your partner to critique each indicator for ambiguity and revise it so it represents a concrete, countable behavior. Use the example below and then fill in your own.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Indicators (separate indicators with a comma or semi-colon)</th>
+            <th>Refined Indicator</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>e.g., Conversation Depth “quality time”</td>
+            <td>
+              Partner asks open-ended questions during shared conversations; etc.
+            </td>
+            <td>
+              Partner asks 3 open-ended questions during a shared conversation resulting in increased self-disclosure from partner; etc.
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" name="ind_dim1_label" placeholder="Dimension 1"></td>
+            <td><textarea name="ind_dim1_indicators"></textarea></td>
+            <td><textarea name="ind_dim1_refined"></textarea></td>
+          </tr>
+          <tr>
+            <td><input type="text" name="ind_dim2_label" placeholder="Dimension 2"></td>
+            <td><textarea name="ind_dim2_indicators"></textarea></td>
+            <td><textarea name="ind_dim2_refined"></textarea></td>
+          </tr>
+          <tr>
+            <td><input type="text" name="ind_dim3_label" placeholder="Dimension 3"></td>
+            <td><textarea name="ind_dim3_indicators"></textarea></td>
+            <td><textarea name="ind_dim3_refined"></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="button-row">
+        <!-- Submit only does something if you hook this to a backend; otherwise students can just print/save as PDF -->
+        <input type="submit" value="Submit (if connected)">
+        <input type="reset" value="Clear form">
+      </div>
+
+      <p class="footer-note">
+        You can fill this form in your browser and then go to File → Print → “Save as PDF” if needed. If this page is connected to a learning system, follow your instructor’s submission instructions.
+      </p>
+
+      <p class="footer-note">
+        Submission instructions: After completing all sections of this activity, please print your screen or use your browser’s print function to save your responses as a PDF (for example, Command (⌘) + P on a Mac or Ctrl + P on Windows, then choose “Save as PDF”). Once you have saved your work, upload or turn in the PDF to your instructor following the assignment directions.
+      </p>
+
+    </form>
+  </div>
+
+  <script>
+    // Toggle the dimensions definition flag panel
+    document.addEventListener('DOMContentLoaded', function () {
+      var toggle = document.getElementById('dimensions-flag-toggle');
+      var panel = document.getElementById('dimensions-flag-panel');
+      if (toggle && panel) {
+        toggle.addEventListener('click', function () {
+          var isOpen = panel.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
